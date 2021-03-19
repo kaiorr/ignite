@@ -1,9 +1,8 @@
 import {Router} from 'express'
-import {Category} from '../../model/Category'
+import {CategoryRepository} from '../../repositories/CategoryRepository'
 
 const categoriesRouter = Router()
-
-const categories: Category[] = []
+const categoriesRepository = new CategoryRepository()
 
  categoriesRouter.get('/', (req, res) => {
    return res.status(200).json().send()
@@ -11,18 +10,10 @@ const categories: Category[] = []
 
 categoriesRouter.post('/', (req, res) => {
   const {name, description} = req.body
-  const category = new Category()
 
-  Object.assign(category, {
-    name,
-    description,
-    created_at: new Date()
-  })
+  categoriesRepository.create({name, description})
 
-  categories.push(category)
-
-  console.log(req.body)
-  return res.status(201).json(category).send()
+  return res.status(201).send()
 })
 
 export {categoriesRouter}
