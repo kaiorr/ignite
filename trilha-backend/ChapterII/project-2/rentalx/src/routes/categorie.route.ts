@@ -6,7 +6,7 @@ const categoriesRouter = Router()
 const categoriesRepository = new CategoryRepository()
 
 categoriesRouter.post('/', (req, res) => {
-  const {name, description} = req.body
+const {name, description} = req.body
 
 const createCategoryService = new CreateCategoryService(categoriesRepository)
 
