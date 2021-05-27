@@ -1,0 +1,3 @@
+class CreateSpecificationService {}
+
+export { CreateSpecificationService };
