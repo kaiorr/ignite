@@ -1,9 +1,13 @@
-import express from 'express'
-import {categoriesRouter} from './routes/categorie.route'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import express from "express";
 
-const app = express()
+import { categoriesRouter } from "./routes/categorie.route";
+import { specificationsRoutes } from "./routes/specifications.routes";
 
-app.use(express.json())
-app.use("/categories", categoriesRouter)
+const app = express();
 
-app.listen(3333, () => console.log("Server is running"))
+app.use(express.json());
+app.use("/categories", categoriesRouter);
+app.use("/specifications", specificationsRoutes);
+
+app.listen(3333, () => console.log("Server is running"));
